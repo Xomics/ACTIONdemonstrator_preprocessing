@@ -1,0 +1,86 @@
+---
+title: "Phenotypes_covariates_rewrite"
+output: html_document
+params: 
+    covariates_path: 'phenotype_covariates_data.csv'
+    output_dir_csv: 'phenotype_covariates_data_hr.csv'
+author:
+    - Casper de Visser^[Radboud University Medical Center, casper.devisser@radboudumc.nl]
+---
+
+
+Parameters
+```{r}
+print(params)
+```
+
+
+
+Read in covariates data
+```{r}
+covariates_data <- read.csv(params$covariates_path, row.names = 1)
+head(covariates_data)
+```
+
+Change values to readable terms #TODO ontologize?
+
+Rewrite values for NTR
+```{r}
+if (2 %in% covariates_data$Sex) {
+
+    # Sex
+    covariates_data$Sex[covariates_data$Sex == 1] <- 'Male'
+    covariates_data$Sex[covariates_data$Sex == 2] <- 'Female'
+    
+    # Sick
+    covariates_data$Sick[covariates_data$Sick == 1] <- 'No'
+    covariates_data$Sick[covariates_data$Sick == 2] <- 'Yes'
+    
+    # Menstruation
+    covariates_data$Menstruation[covariates_data$Menstruation == 1] <- 'No'
+    covariates_data$Menstruation[covariates_data$Menstruation == 2] <- 'Yes'
+
+    # Vitamines
+    covariates_data$Vitamines[covariates_data$Vitamines == 1] <- 'No'
+    covariates_data$Vitamines[covariates_data$Vitamines == 2] <- 'Yes'
+}
+    
+covariates_data
+```
+
+
+
+
+Rewrite for CURIUM
+```{r}
+if (0 %in% covariates_data$Sex) {
+
+    # Sex
+    covariates_data$Sex[covariates_data$Sex == 1] <- 'Male'
+    covariates_data$Sex[covariates_data$Sex == 0] <- 'Female' 
+    
+    # Sick
+    covariates_data$Sick[covariates_data$Sick == 0] <- 'No'
+    covariates_data$Sick[covariates_data$Sick == 1] <- 'Yes'
+    
+    # Menstruation
+    covariates_data$Menstruation[covariates_data$Menstruation == 0] <- 'No'
+    covariates_data$Menstruation[covariates_data$Menstruation == 1] <- 'Yes'
+
+    # Vitamines
+    covariates_data$Vitamines[covariates_data$Vitamines == 0] <- 'No'
+    covariates_data$Vitamines[covariates_data$Vitamines == 1] <- 'Yes'
+    
+    # Age to whole numbers
+    covariates_data$Age <- floor(covariates_data$Age)
+}
+ 
+head(covariates_data)
+```
+
+
+Write df to csv file
+```{r}
+write.csv(covariates_data, file = params$output_dir_csv, row.names = TRUE)
+```
+

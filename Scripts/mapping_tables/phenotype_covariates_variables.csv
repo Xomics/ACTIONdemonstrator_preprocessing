@@ -1,0 +1,20 @@
+variable,label,CURIUMvariable,NTRvariable
+Age,age at assessment [years],Age_years,Age_urine_1_act
+Sex,Sex,Geslacht,sex
+Sick,Currently sick,Ziek,U1_Q4_flu_act
+Menstruation,menstruating currently,Ongesteld,U1_Menstruation_coll_act
+Vitamines,Vitamine use,Vitaminen,U1_Q8_vitamines_act
+Medication_1_urine,Name of first medication at urine sampling,Medicatie1_urineafname,U1_medication_1_act
+Medication_1_urine_ATC,ATC code of first medication at urine sampling,Medicatie1_urine_ATCCODE,U1_medication_ATC_1_act
+Medication_2_urine,Name of second medication at urine sampling,Medicatie2_urineafname,U1_medication_2_act
+Medication_2_urine_ATC,ATC code of second medication at urine sampling,Medicatie2_urine_ATCCODE,U1_medication_ATC_2_act
+Medication_3_urine,Name of third medication at urine sampling,Medicatie3_urineafname,U1_medication_3_act
+Medication_3_urine_ATC,ATC code of third medication at urine sampling,Medicatie3_urine_ATCCODE,U1_medication_ATC_3_act
+Medication_1_buccal,Name of first medication at buccal sampling,Medicatie1_wangslijmafname,U1_medication_1_act
+Medication_1_buccal_ATC,ATC code of first medication at buccal sampling,Medicatie1_wangslijm_ATCCODE,U1_medication_ATC_1_act
+Medication_2_buccal,Name of second medication at buccal sampling,Medicatie2_wangslijmafname,U1_medication_2_act
+Medication_2_buccal_ATC,ATC code of second medication at buccal sampling,Medicatie2_wangslijm_ATCCODE,U1_medication_ATC_2_act
+Medication_3_buccal,Name of third medication at buccal sampling,Medicatie3_wangslijmafname,U1_medication_3_act
+Medication_3_buccal_ATC,ATC code of third medication at buccal sampling,Medicatie3_wangslijm_ATCCODE,U1_medication_ATC_3_act
+Aggression_Tscore,Parent-rated (predominantly mother) aggression score,CBCL_prob_Agressief_Gedrag_T,Tca_agg_m_act
+Familynumber,Family ID,Familie,FamilyNumber

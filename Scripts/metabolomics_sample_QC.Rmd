@@ -1,0 +1,51 @@
+---
+title: "Metabolomics sample QC"
+output: html_document
+params: 
+    mtblmcs_values_path: 'metabolomics_features_QC_filtered.csv'
+    sample_qc_path: 'metabolomics_qc_values.csv'
+    output_dir_csv: 'out.csv'
+author:
+    - Casper de Visser^[Radboud University Medical Center, casper.devisser@radboudumc.nl]
+---
+
+
+Parameters
+```{r}
+print(params)
+```
+
+
+
+Read in metabolomics values df
+```{r}
+df <- read.csv(params$mtblmcs_values_path, row.names = 1)
+```
+
+
+Read sample QC file
+
+```{r}
+qc_values <- read.csv(params$sample_qc_path)
+```
+
+
+Filter out samples with TRUE value in any of the QC parameters
+```{r}
+qc_values$qc_sum <- apply(qc_values[,2:ncol(qc_values)], 1, sum, na.rm=T)
+qc_values_false <- qc_values[qc_values$qc_sum == 0 , ]
+sample_names <- qc_values_false$XOmicsmetaboID
+
+# Subset mtblmcs_values
+mtblmcs_filtered <- subset(df, subset = df$XOmicsmetaboID %in% sample_names)
+
+message("[FILTERING] Removed ", dim(df)[1]-dim(mtblmcs_filtered )[1], 
+        " samples")
+
+```
+
+Write df to csv file
+```{r}
+write.csv(mtblmcs_filtered, file = params$output_dir_csv, row.names = FALSE)
+```
+
