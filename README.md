@@ -1,6 +1,6 @@
 # Data preparation workflow
 
-This workflow converts the original data of ACTION-NTR and CURIUM into standardized formats, through which they can be used as input for the main workflow. 
+This workflow converts the original data of ACTION-NTR and CURIUM that was uploaded to the Digital Research Environment (DRE) into standardized formats, through which they can be used as input for the [main workflow](https://github.com/Xomics/ACTIONdemonstrator_workflow). 
 
 # Pipeline summary
 
@@ -61,14 +61,14 @@ nextflow run action_file_preparation.nf
 
 Define a Dockerfile (example: *Container_files\r-base-phenotypes\Dockerfile*), build Docker image, push to registry, save to archive, and convert to Singularity image.
 
-Run on a local machine:
+Build docker image on a local machine and push to the registry:
 ```{bash}
 docker login registry.cmbi.umcn.nl
 docker build -t registry.cmbi.umcn.nl/x-omics-action-dataset/action_nextflow/r-base-phenotypes:$VERSION .
 docker push registry.cmbi.umcn.nl/x-omics-action-dataset/action_nextflow/r-base-phenotypes:$VERSION
 ```
 
-Run in a DRE VM (or locally):
+Run in the Digital Research Environment:
 ```{bash}
 docker pull registry.cmbi.umcn.nl/x-omics-action-dataset/action_nextflow/r-base-phenotypes:$VERSION
 docker images # to get IMAGE_ID
